@@ -1,0 +1,224 @@
+/* -----------------------------------------------
+   Carousel  wknd-carousel
+   DOM structure (from JS):
+     .carousel.wknd-carousel
+       .carousel-slides-container
+         ul.carousel-slides
+           li.carousel-slide
+             .carousel-slide-image
+             .carousel-slide-content
+       .carousel-controls  (when > 1 slide)
+         nav > ol.carousel-slide-indicators > li > button
+         .carousel-navigation-buttons > button.slide-prev/next
+----------------------------------------------- */
+
+/* Block wrapper */
+.carousel.wknd-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Slide strip */
+.carousel.wknd-carousel .carousel-slides-container {
+  overflow: hidden;
+}
+
+.carousel.wknd-carousel .carousel-slides {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel.wknd-carousel .carousel-slides::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel.wknd-carousel .carousel-slide {
+  min-width: 100%;
+  scroll-snap-align: start;
+}
+
+/* Image */
+.carousel.wknd-carousel .carousel-slide-image {
+  line-height: 0;
+}
+
+.carousel.wknd-carousel .carousel-slide-image picture,
+.carousel.wknd-carousel .carousel-slide-image img {
+  display: block;
+  width: 100%;
+}
+
+.carousel.wknd-carousel .carousel-slide-image img {
+  height: clamp(220px, 45vw, 600px);
+  object-fit: cover;
+}
+
+/* Content card  sits below the image */
+.carousel.wknd-carousel .carousel-slide-content {
+  background: #fff;
+  padding: 1.25rem 1.5rem;
+}
+
+.carousel.wknd-carousel .carousel-slide-content h1,
+.carousel.wknd-carousel .carousel-slide-content h2,
+.carousel.wknd-carousel .carousel-slide-content h3 {
+  font-family:Asar,'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+  font-weight: 400;
+  margin: 1.125rem 0 0;
+  color: #202020;
+  line-height: 1.15;
+}
+
+.carousel.wknd-carousel .carousel-slide-content p {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #202020;
+  margin: 0 0 1rem;
+}
+
+.carousel.wknd-carousel .carousel-slide-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+
+/* VIEW TRIPS */
+.carousel.wknd-carousel .carousel-slide-content .button-container a.button,
+.carousel.wknd-carousel .carousel-slide-content .button-container a.button.primary,
+.carousel.wknd-carousel .carousel-slide-content .button-container a {
+  display: inline-block;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #202020;
+  text-decoration: none;
+  background-color: #ffea00;
+  border: 2px solid #ffea00;
+  padding: 0.875rem 2.1875rem;
+  border-radius: 0;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.carousel.wknd-carousel .carousel-slide-content .button-container a:hover,
+.carousel.wknd-carousel .carousel-slide-content .button-container a.button:hover,
+.carousel.wknd-carousel .carousel-slide-content .button-container a.button.primary:hover {
+  background-color: #e0cf00;
+  border-color: #e0cf00;
+  color: #131313;
+  text-decoration: none;
+}
+
+/* Desktop: content card overlaps image bottom */
+@media (width >= 900px) {
+  .carousel.wknd-carousel .carousel-slide-content {
+    position: relative;
+    height: 11.25rem;
+    min-height: 11.25rem;
+    margin-top: -11.25rem;
+    z-index: 1;
+    padding: 0 1.75rem;
+    max-width: 71pc;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .carousel.wknd-carousel .carousel-slide-content h1,
+  .carousel.wknd-carousel .carousel-slide-content h2,
+  .carousel.wknd-carousel .carousel-slide-content h3 {
+    margin: 0 0 0.375rem;
+  }
+
+  .carousel.wknd-carousel .carousel-slide-content p {
+    margin: 0 0 0.875rem;
+  }
+}
+
+/* Controls bar: dots centered, arrows pinned right */
+.carousel.wknd-carousel .carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid #e8e8e8;
+  position: relative;
+}
+
+.carousel.wknd-carousel .carousel-slide-indicators {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel.wknd-carousel .carousel-slide-indicator button {
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-radius: 50%;
+  background: #c0c0c0;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.carousel.wknd-carousel .carousel-slide-indicator button[disabled] {
+  background: #333;
+  cursor: default;
+}
+
+/* Arrows */
+.carousel.wknd-carousel .carousel-navigation-buttons {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.carousel.wknd-carousel .carousel-navigation-buttons button {
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  background: transparent;
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel.wknd-carousel .carousel-navigation-buttons button::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #181818;
+  border-right: 2px solid #181818;
+}
+
+.carousel.wknd-carousel .carousel-navigation-buttons .slide-prev::before {
+  transform: rotate(-135deg);
+  margin-left: 4px;
+}
+
+.carousel.wknd-carousel .carousel-navigation-buttons .slide-next::before {
+  transform: rotate(45deg);
+  margin-right: 4px;
+}

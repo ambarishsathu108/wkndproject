@@ -1,3 +1,20 @@
+/*
+ * Hero – full-bleed image with text overlay
+ * Mobile-first · 600 px / 900 px breakpoints
+ *
+ * DOM (built by scripts.js buildHeroBlock):
+ *   .hero-container  (section class)
+ *     .hero-wrapper
+ *       .hero
+ *         picture > img
+ *         h1
+ */
+
+/* full-bleed: remove section constraints */
+.hero-container {
+  margin: 0;
+}
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -5,33 +22,325 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
-}
-
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
-}
-
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
+  display: flex;
+  align-items: flex-end;
+  min-height: 50vw;
+  padding: 2rem 1rem;
   box-sizing: border-box;
 }
 
+/* background image */
+.hero picture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
 .hero img {
-  object-fit: cover;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* gradient scrim */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 0 0 / 55%) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+@media (width >= 600px) {
+  .hero {
+    min-height: 420px;
+    padding: 2.5rem 2rem;
+  }
 }
 
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    min-height: 560px;
+    padding: 3rem 2.5rem;
+  }
+
+  .hero h1 {
+    font-size: var(--heading-font-size-xxl);
+  }
+}
+
+/* Next Adventures hero variant */
+.hero.wknd-next-adventures-hero {
+  position: relative;
+  display: block;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.hero.wknd-next-adventures-hero::after {
+  display: none;
+}
+
+.hero.wknd-next-adventures-hero > div,
+.hero.wknd-next-adventures-hero > div > div {
+  display: block;
+}
+
+/* Row 1: heading row */
+.hero.wknd-next-adventures-hero > div:first-child {
+  padding: 1.5rem 1rem 1rem;
+}
+
+@media (width >= 600px) {
+  .hero.wknd-next-adventures-hero > div:first-child {
+    padding: 1.5rem 2rem 1rem;
+  }
+}
+
+@media (width >= 900px) {
+  .hero.wknd-next-adventures-hero > div:first-child {
+    padding: 1.5rem 3.5rem 1rem;
+  }
+}
+
+/* "Next Adventures" heading */
+.hero.wknd-next-adventures-hero .wknd-next-adventures-heading {
+  display: inline-block;
+  font-family: 'Asar', var(--heading-font-family), serif;
+  font-size: 2.25rem;
+  font-weight: 400;
+  color: #202020;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #ffea00;
+  line-height: 1.15;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.hero.wknd-next-adventures-hero > div:last-child > div > p:first-of-type {
+  margin: 0;
+  line-height: 0;
+}
+
+.hero.wknd-next-adventures-hero > div:last-child > div > p:first-of-type picture,
+.hero.wknd-next-adventures-hero > div:last-child > div > p:first-of-type img {
+  position: static;
+  display: block;
+  inset: unset;
+  width: 100%;
+}
+
+.hero.wknd-next-adventures-hero > div:last-child > div > p:first-of-type img {
+  height: clamp(280px, 45vw, 620px);
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero.wknd-next-adventures-hero > div:last-child > div > .wknd-next-adventures-content {
+  background: #fff;
+  margin: 0 1rem;
+  padding: 1.5rem 1.5rem 1.75rem;
+  margin-top: -6rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero.wknd-next-adventures-hero > div:last-child > div > .wknd-next-adventures-content > h1 {
+  position: static;
+  z-index: auto;
+  max-width: none;
+  margin: 0 0 1rem;
+  color: #202020;
+  font-family: Asar, var(--heading-font-family), serif;
+  font-size: 2.25rem;
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+.hero.wknd-next-adventures-hero > div:last-child > div > .wknd-next-adventures-content > p {
+  margin: 0 0 1.5rem;
+  color: #202020;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.hero.wknd-next-adventures-hero > div:last-child > div > .wknd-next-adventures-content > p:last-of-type {
+  margin-bottom: 0;
+}
+
+.hero.wknd-next-adventures-hero > div:last-child > div > .wknd-next-adventures-content > p:last-of-type .button:any-link {
+  display: inline-block;
+  background-color: #ffea00;
+  border: 2px solid #ffea00;
+  border-radius: 0;
+  padding: 0.875rem 2.1875rem;
+  color: #202020;
+  font-family: 'Source Sans Pro', var(--body-font-family), sans-serif;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hero.wknd-next-adventures-hero > div:last-child > div > .wknd-next-adventures-content > p:last-of-type .button:any-link:hover {
+  background-color: #e0cf00;
+  border-color: #e0cf00;
+  color: #202020;
+}
+
+@media (width >= 600px) {
+  .hero.wknd-next-adventures-hero > div:last-child > div > .wknd-next-adventures-content {
+    margin-top: -8rem;
+  }
+}
+
+@media (width >= 900px) {
+  .hero.wknd-next-adventures-hero > div:last-child > div > .wknd-next-adventures-content {
+    margin-left: 3.5rem;
+    margin-right: 3.5rem;
+    margin-top: -17rem;
+    padding: 2.125rem 2.5rem 2.25rem;
+  }
+}
+
+/* Adventures hero variant */
+.hero.wknd-adventures-hero {
+  position: relative;
+  display: block;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.hero.wknd-adventures-hero::after {
+  display: none;
+}
+
+.hero.wknd-adventures-hero > div,
+.hero.wknd-adventures-hero > div > div {
+  display: block;
+}
+
+/* Row 1: heading row — padding mirrors next-adventures */
+.hero.wknd-adventures-hero > div:first-child {
+  padding: 1.5rem clamp(1.5rem, 4vw, 2.5rem) 1rem;
+}
+
+/* "Adventures" page heading */
+.hero.wknd-adventures-hero > div:first-child .wknd-section-heading {
+  display: block;
+  font-family: 'Asar', Georgia, 'Times New Roman', serif;
+  font-size: 2.25rem;
+  font-weight: 400;
+  color: #202020;
+  line-height: 1.15;
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .hero.wknd-adventures-hero > div:first-child {
+    padding: 2rem clamp(1.5rem, 4vw, 2.5rem) 1.25rem;
+  }
+
+  .hero.wknd-adventures-hero > div:first-child .wknd-section-heading {
+    font-size: 2.25rem;
+  }
+}
+
+/* Image: full-width, fixed aspect */
+.hero.wknd-adventures-hero > div > div > p:first-of-type {
+  margin: 0;
+  line-height: 0;
+}
+
+.hero.wknd-adventures-hero > div > div > p:first-of-type picture,
+.hero.wknd-adventures-hero > div > div > p:first-of-type img {
+  position: static;
+  display: block;
+  inset: unset;
+  width: 100%;
+}
+
+.hero.wknd-adventures-hero > div > div > p:first-of-type img {
+  height: clamp(260px, 45vw, 600px);
+  object-fit: cover;
+  object-position: center;
+}
+
+/* White content panel overlapping the image bottom, with side gaps */
+.hero.wknd-adventures-hero .wknd-adventures-content {
+  background: #fff;
+  margin: -2.5rem 1rem 0;
+  padding: 1.75rem 1.5rem 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero.wknd-adventures-hero .wknd-adventures-content h2 {
+  position: static;
+  z-index: auto;
+  max-width: none;
+  margin: 0 0 0.875rem;
+  color: #202020;
+  font-family: Asar, var(--heading-font-family), serif;
+  font-size: clamp(1.625rem, 4vw, 2.625rem);
+  font-weight: 400;
+  line-height: 1.15;
+  text-transform: none;
+}
+
+.hero.wknd-adventures-hero .wknd-adventures-content p {
+  margin: 0;
+  color: #202020;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.hero.wknd-adventures-hero .wknd-adventures-content a {
+  color: inherit;
+}
+
+@media (width >= 600px) {
+  .hero.wknd-adventures-hero .wknd-adventures-content {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: -3.5rem;
+    padding: 2rem 2rem 2.25rem;
+  }
+}
+
+@media (width >= 900px) {
+  .hero.wknd-adventures-hero .wknd-adventures-content {
+    margin-left: 3.5rem;
+    margin-right: 3.5rem;
+    margin-top: -5rem;
+    padding: 2.25rem 3rem 2.5rem;
+  }
+
+  .hero.wknd-adventures-hero .wknd-adventures-content h2 {
+    margin-bottom: 1rem;
   }
 }

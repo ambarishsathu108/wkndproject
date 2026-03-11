@@ -17,8 +17,10 @@ import {
  * @param {Element} main The container element
  */
 function buildHeroBlock(main) {
-  const h1 = main.querySelector('h1');
-  const picture = main.querySelector('picture');
+  const inBlock = (element) => element.closest('.hero, .carousel, .columns, .cards, .fragment, .header, .footer');
+
+  const h1 = [...main.querySelectorAll('h1')].find((heading) => !inBlock(heading));
+  const picture = [...main.querySelectorAll('picture')].find((image) => !inBlock(image));
   // eslint-disable-next-line no-bitwise
   if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
     // Check if h1 or picture is already inside a hero block
@@ -167,6 +169,7 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+  loadCSS(`${window.hlx.codeBasePath}/styles/wknd-sections.css`);
   loadFonts();
 }
 

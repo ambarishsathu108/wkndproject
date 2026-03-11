@@ -1,1 +1,8 @@
 /* add global styles that can be loaded post LCP here */
+
+/* Highlight section metadata style */
+.section.highlight {
+  background-color: var(--light-color);
+  padding: 48px 24px;
+  margin: 0;
+}

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+/* -----------------------------------------------
+   WKND global site overrides
+   Loaded lazily (see scripts.js loadLazy)
+----------------------------------------------- */
+
+/* Font overrides */
+body,
+.section {
+  font-family: 'Source Sans Pro', var(--body-font-family), Arial, sans-serif;
+}
+
+/* -----------------------------------------------
+   Section headings – yellow bar accent
+   Targets h2 in default-content areas only
+----------------------------------------------- */
+main .section > .default-content-wrapper h2 {
+  display: inline-block;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #131313;
+  margin: 0 0 24px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #ffea00;
+}
+
+/* -----------------------------------------------
+   WKND section heading — Asar serif
+   Tagged by each block's JS via .wknd-section-heading
+----------------------------------------------- */
+.wknd-section-heading {
+  font-family: Asar, serif;
+  font-weight: 300;
+  letter-spacing: 0;
+  color: #202020;
+}
+
+/* -----------------------------------------------
+   WKND button overrides
+   Yellow CTA, sharp corners, bold uppercase
+----------------------------------------------- */
+a.button.primary,
+button.button.primary,
+a.button.accent,
+button.button.accent {
+  background-color: #ffea00;
+  border-color: #ffea00;
+  color: #131313;
+  border-radius: 0;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 12px 24px;
+}
+
+a.button.primary:hover,
+a.button.primary:focus-visible,
+a.button.accent:hover,
+a.button.accent:focus-visible {
+  background-color: #d4bb00;
+  border-color: #d4bb00;
+  color: #131313;
+}
+
+a.button.secondary,
+button.button.secondary {
+  background-color: transparent;
+  border-color: #131313;
+  border-radius: 0;
+  color: #131313;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 12px 24px;
+}

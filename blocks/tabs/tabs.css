@@ -1,0 +1,180 @@
+/* ─────────────────────────────────────────────────────────────
+   Section heading — extracted from the block's first authored row
+   ───────────────────────────────────────────────────────────── */
+.tabs-heading-wrapper {
+  margin-bottom: 28px;
+}
+
+.tabs-heading-wrapper .wknd-section-heading {
+  font-family: Asar, serif;
+  font-weight: 400;
+  font-size: 2.25rem;
+  color: #202020;
+  line-height: 1.15;
+  margin: 0 0 18px;
+  padding-bottom: 16px;
+  position: relative;
+}
+
+/* Yellow accent underline – fixed 72px wide, 3px tall */
+.tabs-heading-wrapper .wknd-section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 72px;
+  height: 3px;
+  background: #ffea00;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Tab list — horizontal filter row
+   ───────────────────────────────────────────────────────────── */
+.tabs.wknd-adventures-tabs .tabs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+  border: none;
+}
+
+.tabs.wknd-adventures-tabs .tabs-list .tabs-tab {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 10px 18px;
+  font-family: var(--body-font-family);
+  font-size: 0.8125rem;     /* 13px */
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #202020;
+  cursor: pointer;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.tabs.wknd-adventures-tabs .tabs-list .tabs-tab[aria-selected='true'] {
+  background: #202020;
+  color: #fff;
+}
+
+.tabs.wknd-adventures-tabs .tabs-list .tabs-tab:hover:not([aria-selected='true']) {
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Tab panels — show/hide via aria-hidden
+   ───────────────────────────────────────────────────────────── */
+.tabs.wknd-adventures-tabs .tabs-panel[aria-hidden='true'] {
+  display: none;
+}
+
+.tabs.wknd-adventures-tabs .tabs-panel[aria-hidden='false'] {
+  display: block;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Cards grid
+   ───────────────────────────────────────────────────────────── */
+.tabs.wknd-adventures-tabs .tabs-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Individual card
+   ───────────────────────────────────────────────────────────── */
+.tabs.wknd-adventures-tabs .tabs-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card image */
+.tabs.wknd-adventures-tabs .tabs-card-image {
+  line-height: 0;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.tabs.wknd-adventures-tabs .tabs-card-image picture {
+  display: block;
+}
+
+.tabs.wknd-adventures-tabs .tabs-card-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card title */
+.tabs.wknd-adventures-tabs .tabs-card-title {
+  font-family: var(--body-font-family);
+  font-size: 0.8125rem;     /* 13px */
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #202020;
+  margin: 0 0 8px;
+  line-height: 1.35;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.tabs.wknd-adventures-tabs .tabs-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tabs.wknd-adventures-tabs .tabs-card-title a:hover {
+  text-decoration: underline;
+}
+
+/* Card description */
+.tabs.wknd-adventures-tabs .tabs-card-desc {
+  font-family: var(--body-font-family);
+  font-size: 0.75rem;       /* 12px */
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #767676;
+  margin: 0;
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Responsive breakpoints
+   ───────────────────────────────────────────────────────────── */
+
+/* Tablet: 2-column grid */
+@media (width >= 600px) {
+  .tabs.wknd-adventures-tabs .tabs-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Desktop: 4-column grid + larger heading */
+@media (width >= 900px) {
+  .tabs.wknd-adventures-tabs .tabs-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+
+  .tabs.wknd-adventures-tabs .tabs-list .tabs-tab {
+    padding: 10px 18px;
+  }
+}

@@ -1,0 +1,166 @@
+/* -----------------------------------------------
+   Product block – wknd-product
+   DOM (built by JS):
+     .product.wknd-product
+       ul.product-grid
+         li.product-card
+           .product-card-image > img + .product-badge
+           .product-card-body > .product-category, h3, .product-rating, .product-price
+----------------------------------------------- */
+
+/* Block wrapper */
+.product.wknd-product {
+  padding: 0;
+}
+
+/* Loading / error state */
+.product.wknd-product .product-loading {
+  text-align: center;
+  padding: 48px 24px;
+  font-size: 15px;
+  color: #6a6a6a;
+}
+
+/* Product grid */
+.product.wknd-product .product-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (width >= 600px) {
+  .product.wknd-product .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .product.wknd-product .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+}
+
+@media (width >= 1200px) {
+  .product.wknd-product .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Individual card */
+.product.wknd-product .product-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.product.wknd-product .product-card:hover {
+  box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+  transform: translateY(-2px);
+}
+
+/* Card image area */
+.product.wknd-product .product-card-image {
+  position: relative;
+  background: #f5f5f5;
+  line-height: 0;
+}
+
+.product.wknd-product .product-card-image img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+/* Discount badge */
+.product.wknd-product .product-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #e53935;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 2px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+/* Card body */
+.product.wknd-product .product-card-body {
+  padding: 16px;
+}
+
+/* Category label */
+.product.wknd-product .product-category {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  margin: 0 0 6px;
+}
+
+/* Product title */
+.product.wknd-product .product-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #131313;
+  margin: 0 0 8px;
+}
+
+/* Star rating */
+.product.wknd-product .product-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px;
+}
+
+.product.wknd-product .product-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  line-height: 1;
+}
+
+.product.wknd-product .product-star svg {
+  fill: #d4d4d4;
+  display: block;
+}
+
+.product.wknd-product .product-star.filled svg {
+  fill: #f5a623;
+}
+
+.product.wknd-product .product-rating-value {
+  font-size: 12px;
+  color: #6a6a6a;
+}
+
+/* Price */
+.product.wknd-product .product-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product.wknd-product .product-price-original {
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.product.wknd-product .product-price-current {
+  font-size: 17px;
+  font-weight: 700;
+  color: #131313;
+}

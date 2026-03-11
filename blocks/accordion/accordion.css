@@ -1,0 +1,121 @@
+/* ─────────────────────────────────────────────────────────────
+   Accordion block — FAQs page (wknd-accordion)
+   All sizing uses clamp() for fluid responsiveness.
+   Media queries handle only structural breakpoints.
+   ───────────────────────────────────────────────────────────── */
+
+.accordion.wknd-accordion {
+  font-family: 'Source Sans Pro', var(--body-font-family), Arial, sans-serif;
+}
+
+/* ── Each item ─────────────────────────────────────────────── */
+.accordion.wknd-accordion .accordion-item {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.accordion.wknd-accordion .accordion-item:first-child {
+  border-top: 1px solid #d8d8d8;
+}
+
+/* ── Trigger button ────────────────────────────────────────── */
+.accordion.wknd-accordion .accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* fluid vertical padding: 20px → 32px across viewport widths */
+  padding: clamp(20px, 2.5vw, 32px) 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  /* fluid gap: 16px → 24px */
+  gap: clamp(16px, 2vw, 24px);
+}
+
+/* No underline or outline on hover/focus */
+.accordion.wknd-accordion .accordion-trigger:hover,
+.accordion.wknd-accordion .accordion-trigger:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+.accordion.wknd-accordion .accordion-trigger:focus-visible {
+  outline: 2px solid #202020;
+  outline-offset: 2px;
+}
+
+/* Question text */
+.accordion.wknd-accordion .accordion-question {
+  font-family: 'Source Sans Pro', var(--body-font-family), Arial, sans-serif;
+  /* fluid font: 13px → 15px */
+  font-size: clamp(13px, 1.4vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #202020;
+  line-height: 1.35;
+  flex: 1;
+}
+
+/* +/− icon */
+.accordion.wknd-accordion .accordion-icon {
+  /* fluid icon: 18px → 22px */
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 300;
+  line-height: 1;
+  color: #202020;
+  flex: none;
+  width: clamp(18px, 1.8vw, 22px);
+  text-align: center;
+  user-select: none;
+}
+
+/* ── Panel (answer) ────────────────────────────────────────── */
+.accordion.wknd-accordion .accordion-panel {
+  /* fluid bottom padding: 24px → 36px */
+  padding: 0 0 clamp(24px, 3vw, 36px);
+}
+
+.accordion.wknd-accordion .accordion-panel[hidden] {
+  display: none;
+}
+
+.accordion.wknd-accordion .accordion-panel p {
+  font-family: 'Source Sans Pro', var(--body-font-family), Arial, sans-serif;
+  /* fluid font: 14px → 17px */
+  font-size: clamp(14px, 1.5vw, 17px);
+  color: #202020;
+  /* fluid line-height: 1.65 → 1.75 */
+  line-height: clamp(1.65, 1.65 + 0.1 * ((100vw - 320px) / 880), 1.75);
+  margin: 0 0 clamp(8px, 1vw, 12px);
+  padding: 0;
+}
+
+.accordion.wknd-accordion .accordion-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.accordion.wknd-accordion .accordion-panel a {
+  color: #1473e6;
+  text-decoration: underline;
+}
+
+.accordion.wknd-accordion .accordion-panel a:hover {
+  color: #0d5bbf;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   600px+ — only structural layout changes (none needed here;
+   all sizing is already fluid via clamp above)
+   ───────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────
+   900px+ — widen max readable line length for answer text
+   ───────────────────────────────────────────────────────────── */
+@media (width >= 900px) {
+  .accordion.wknd-accordion .accordion-panel p {
+    max-width: 75ch;
+  }
+}
+

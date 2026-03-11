@@ -1,0 +1,75 @@
+/* members-only block — self-contained, no global style dependencies */
+
+.members-only {
+  padding: 1.5rem 0 2rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+/* ── Heading ── */
+.members-only .members-only-heading {
+  margin-bottom: 1.5rem;
+}
+
+.members-only .members-only-heading h1,
+.members-only .members-only-heading h2,
+.members-only .members-only-heading h3 {
+  font-family: 'asar', Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 400;
+  color: #2c2c2c;
+  line-height: 1.2;
+  margin: 0 0 0.6rem;
+}
+
+.members-only .members-only-heading h1::after,
+.members-only .members-only-heading h2::after,
+.members-only .members-only-heading h3::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background-color: #f0c200;
+  margin-top: 0.5rem;
+}
+
+/* ── Content ── */
+.members-only .members-only-content {
+  margin-top: 1.25rem;
+}
+
+.members-only .members-only-content p {
+  font-family: 'adobe-clean', 'Source Sans Pro', Arial, sans-serif;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  line-height: 1.6;
+  color: #444;
+  margin: 0;
+}
+
+.members-only .members-only-content p strong {
+  color: #2c2c2c;
+  font-weight: 700;
+}
+
+/* ── Tablet (600px+) ── */
+@media (min-width: 600px) {
+  .members-only {
+    padding: 2rem 0 2.5rem;
+  }
+
+  .members-only .members-only-content p {
+    font-size: 1rem;
+  }
+}
+
+/* ── Desktop (900px+) ── */
+@media (min-width: 900px) {
+  .members-only {
+    padding: 2.5rem 0 3rem;
+  }
+
+  .members-only .members-only-heading h1,
+  .members-only .members-only-heading h2,
+  .members-only .members-only-heading h3 {
+    font-size: 2.5rem;
+  }
+}

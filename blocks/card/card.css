@@ -1,0 +1,176 @@
+/* ─────────────────────────────────────────────────────────────
+   Card block — FAQs page variant (wknd-faq-card)
+   Authored structure:
+     Row 1  heading         → .card-heading-wrapper (hoisted before block)
+     Row 2  image | content → .card-main-row
+     Row 3  body paragraph  → .card-body-text
+   ───────────────────────────────────────────────────────────── */
+
+/* ── Section heading ──────────────────────────────────────── */
+.card-heading-wrapper {
+  margin-bottom: 24px;
+}
+
+.card-heading-wrapper .wknd-section-heading {
+  font-family: Asar, serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: #202020;
+  line-height: 1.15;
+  letter-spacing: 0;
+  margin: 0 0 20px;
+  padding-bottom: 18px;
+  position: relative;
+}
+
+/* Yellow accent bar */
+.card-heading-wrapper .wknd-section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 72px;
+  height: 3px;
+  background: #ffea00;
+}
+
+/* ── Block reset ──────────────────────────────────────────── */
+.card.wknd-faq-card {
+  font-family: 'Source Sans Pro', var(--body-font-family), Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Main row: image + content ────────────────────────────── */
+.card.wknd-faq-card .card-main-row {
+  display: flex;
+  flex-direction: column;       /* mobile: stack */
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Image column */
+.card.wknd-faq-card .card-image {
+  flex: none;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.card.wknd-faq-card .card-image picture {
+  display: block;
+  line-height: 0;
+}
+
+.card.wknd-faq-card .card-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Content column */
+.card.wknd-faq-card .card-content {
+  padding: 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.card.wknd-faq-card .card-content h3 {
+  font-family: 'Source Sans Pro', var(--body-font-family), Arial, sans-serif;
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 700;
+  color: #202020;
+  margin: 0 0 20px;
+  padding: 0;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.card.wknd-faq-card .card-content p {
+  font-family: 'Source Sans Pro', var(--body-font-family), Arial, sans-serif;
+  font-size: clamp(14px, 1.6vw, 17px);
+  color: #202020;
+  line-height: 1.65;
+  margin: 0 0 8px;
+  padding: 0;
+}
+
+/* Links inside content */
+.card.wknd-faq-card .card-content a {
+  color: #1473e6;
+  text-decoration: underline;
+}
+
+.card.wknd-faq-card .card-content a:hover {
+  color: #0d5bbf;
+}
+
+/* ── Full-width body text row ─────────────────────────────── */
+.card.wknd-faq-card .card-body-text {
+  padding: 24px 0 0;
+}
+
+.card.wknd-faq-card .card-body-text p,
+.card.wknd-faq-card .card-body-text div {
+  font-family: 'Source Sans Pro', var(--body-font-family), Arial, sans-serif;
+  font-size: clamp(14px, 1.5vw, 17px);
+  color: #202020;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+
+@media (width >= 600px) {
+  .card.wknd-faq-card .card-main-row {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .card.wknd-faq-card .card-image {
+    flex: 0 0 55%;
+    overflow: hidden;
+  }
+
+  .card.wknd-faq-card .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card.wknd-faq-card .card-content {
+    flex: 1;
+    padding: 0 0 0 32px;
+    justify-content: flex-start;
+  }
+}
+
+@media (width >= 900px) {
+  .card.wknd-faq-card .card-image {
+    flex: 0 0 65%;
+  }
+
+  .card.wknd-faq-card .card-content {
+    padding: 0 0 0 48px;
+  }
+
+  .card.wknd-faq-card .card-content h3 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .card.wknd-faq-card .card-content p {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  .card.wknd-faq-card .card-body-text {
+    padding-top: 28px;
+  }
+
+  .card.wknd-faq-card .card-body-text p,
+  .card.wknd-faq-card .card-body-text div {
+    font-size: 1.125rem;
+  }
+}
